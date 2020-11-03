@@ -87,7 +87,10 @@ function handleButton(card, quote) {
 
 quoteForm.addEventListener("submit", (e) => {
     e.preventDefault()
-    let {author, quote} = e.target 
+    // // let author = e.target.author.value
+    // // let quote = e.target.quote.value
+    // let {author, quote} = e.target
+    debugger
     fetch("http://localhost:3000/quotes", {
         method: "POST", 
         headers: {
@@ -95,8 +98,8 @@ quoteForm.addEventListener("submit", (e) => {
             "Accept": "application/json"
         }, 
         body: JSON.stringify({
-            quote: quote.value,
-            author: author.value
+            quote: e.target.quote.value,
+            author: e.target.author.value
         })
     })
     .then(resp => resp.json())
